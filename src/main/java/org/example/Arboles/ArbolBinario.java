@@ -235,19 +235,14 @@ public class ArbolBinario<T extends Comparable<T>>{
         if (nodo == null || min.compareTo(max) > 0) {
             return 0;
         }
-
         int compMin = nodo.getElemento().compareTo(min);
         int compMax = nodo.getElemento().compareTo(max);
-
-
         if (compMax > 0) {
-            int match = (compMin >= 0) ? 1 : 0;
-            return match + contarEquiposEnRango(nodo.getIzquierdo(), min, max);
+            return contarEquiposEnRango(nodo.getIzquierdo(), min, max);
         }
 
         if (compMin < 0) {
-            int match = (compMax <= 0) ? 1 : 0;
-            return match + contarEquiposEnRango(nodo.getDerecho(), min, max);
+            return contarEquiposEnRango(nodo.getDerecho(), min, max);
         }
 
         return 1 + contarEquiposEnRango(nodo.getIzquierdo(), min, max) + contarEquiposEnRango(nodo.getDerecho(), min, max);
